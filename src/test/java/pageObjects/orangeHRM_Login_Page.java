@@ -22,6 +22,8 @@ public class orangeHRM_Login_Page extends Base_Class_init {
 	
 	@FindBy(xpath="//button[@type='submit']") WebElement submit_Btn;
 	
+	@FindBy(xpath="//p[text()='Invalid credentials']") WebElement Invalid_Credential_Result;
+	
 	
 	public void login_Function(String USERNAME , String PASSWORD)
 	{
@@ -35,5 +37,13 @@ public class orangeHRM_Login_Page extends Base_Class_init {
 	}
 	
 	
+	public boolean check_Invalid_Validation()
+	{
+
+		return wait_Obj.until(ExpectedConditions.visibilityOf(Invalid_Credential_Result)).isDisplayed(); //false
+		
+	}
+	
+		
 
 }

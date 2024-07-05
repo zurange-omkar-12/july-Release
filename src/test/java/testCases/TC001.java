@@ -5,19 +5,33 @@ import org.testng.annotations.Test;
 import pageObjects.*;
 
 
-
 public class TC001 extends Base_Class_For_Test_Cases {
-	
 		
 	
-  @Test
-  public void f() {
+  @Test(dataProvider = "Credential_Provider")
+  public void user_Login(user_Details USER) {
 	  
 	  HRM_Login_Page = new orangeHRM_Login_Page(driver_Obj);
+	  HRM_Dashboard_Page = new orangeHRM_Dashboard_Page(driver_Obj);
 	  
+	   
+	   HRM_Login_Page.login_Function(USER.get_userNAME(),USER.get_passWORD());
+	   
 
-	  HRM_Login_Page.login_Function("Admin", "admin123");
+
+	  if(USER.expecTED)
+	  {
+		  System.out.println("TRUE");
+		  softAssert_Obj.assertTrue(HRM_Dashboard_Page.validate_Dashboard_Page());
+	  }else
+	  {
+		  softAssert_Obj.assertTrue(HRM_Login_Page.check_Invalid_Validation());
+	  }
+
+	   
 	 
+	  softAssert_Obj.assertAll();
+
   }
 
 
