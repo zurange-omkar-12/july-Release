@@ -1,5 +1,8 @@
 package pageObjects;
 
+import java.io.File;
+
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,6 +26,16 @@ public class orangeHRM_Dashboard_Page extends Base_Class_init {
 		return wait_Obj.until(ExpectedConditions.visibilityOf(dashboard_Header)).isDisplayed();
 	}
 	
+	
+	public void capture_Dashboard_Page_Screenshot()
+	{
+		File Source=take_Screenshot_Object.getScreenshotAs(OutputType.FILE);
+		
+		File Target = new File(System.getProperty("user.dir")+"/Screenshots/Valid"+random_int_Obj.nextInt(10000)+".png");
+		
+		Source.renameTo(Target);
+		
+	}
 	
 
 }

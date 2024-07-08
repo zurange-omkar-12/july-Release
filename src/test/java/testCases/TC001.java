@@ -23,9 +23,12 @@ public class TC001 extends Base_Class_For_Test_Cases {
 	  {
 		  System.out.println("TRUE");
 		  softAssert_Obj.assertTrue(HRM_Dashboard_Page.validate_Dashboard_Page());
+		  HRM_Dashboard_Page.capture_Dashboard_Page_Screenshot();
+		  
 	  }else
 	  {
 		  softAssert_Obj.assertTrue(HRM_Login_Page.check_Invalid_Validation());
+		  HRM_Login_Page.capture_Invalid_Login_Details_Screenshot();
 	  }
 
 	   

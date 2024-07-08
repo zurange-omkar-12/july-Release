@@ -1,5 +1,8 @@
 package pageObjects;
 
+import java.io.File;
+
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +27,8 @@ public class orangeHRM_Login_Page extends Base_Class_init {
 	
 	@FindBy(xpath="//p[text()='Invalid credentials']") WebElement Invalid_Credential_Result;
 	
+	@FindBy(xpath = "//div[@class='orangehrm-login-slot-wrapper']/div[2]") WebElement Invalid_Credential_Result_Screenshot;
+	
 	
 	public void login_Function(String USERNAME , String PASSWORD)
 	{
@@ -34,6 +39,7 @@ public class orangeHRM_Login_Page extends Base_Class_init {
 		
 		wait_Obj.until(ExpectedConditions.elementToBeClickable(submit_Btn)).click();
 		
+		
 	}
 	
 	
@@ -42,6 +48,15 @@ public class orangeHRM_Login_Page extends Base_Class_init {
 
 		return wait_Obj.until(ExpectedConditions.visibilityOf(Invalid_Credential_Result)).isDisplayed(); //false
 		
+	}
+	
+	public void capture_Invalid_Login_Details_Screenshot()
+	{
+		File source = wait_Obj.until(ExpectedConditions.visibilityOf(Invalid_Credential_Result_Screenshot)).getScreenshotAs(OutputType.FILE);
+		
+		File Target = new File(System.getProperty("user.dir")+"/Screenshots/Invalid"+random_int_Obj.nextInt(10000)+".png");
+		
+		source.renameTo(Target);
 	}
 	
 		
