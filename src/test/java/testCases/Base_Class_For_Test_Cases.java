@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Base_Class_For_Test_Cases {
@@ -39,7 +39,7 @@ public class Base_Class_For_Test_Cases {
 
 		properties_Obj.load(fileReader_Obj);
 
-		driver_Obj = new ChromeDriver();
+		driver_Obj = new FirefoxDriver();
 		wait_Obj = new WebDriverWait(driver_Obj, Duration.ofSeconds(10));
 		softAssert_Obj = new SoftAssert();
 
